@@ -23,14 +23,15 @@ All tickets for the project are being tracked on [GitHub][].
 
 == Changelog ==
 = 1.0 =
-
 * Launch of the plugin
 
 
 = 1.1 =
-
 * Enhanced documentation
 
+
+= 1.2 =
+* Filter title
 
 == Installation ==
 

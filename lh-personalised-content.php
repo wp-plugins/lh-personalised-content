@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: LH Personalised Content
-Version: 1.1
+Version: 1.2
 Plugin URI: http://lhero.org/plugins/lh-personalised-content/
 Description: Creates a shortcodes for personalised content that can be used on your website of your WordPress emails
 Author: Peter Shaw
@@ -9,6 +9,19 @@ Author URI: http://shawfactor.com
 */
 
 class LH_personalised_content_plugin {
+
+//action shortcodes in title is shortcode exists
+
+public function the_title_filter( $title, $id = null ) {
+
+if (has_shortcode( $title, 'lh_personalised_content' )){
+
+$title = do_shortcode($title);
+
+}
+
+return $title;
+}
 
 
 function check_user(){
@@ -191,8 +204,8 @@ add_shortcode('lh_personalised_content', array($this,"lh_personalised_content_ou
 function __construct() {
 
 add_filter( 'wp_mail', array($this,"wp_mail_filter"));
-
 add_action( 'init', array($this,"register_shortcodes"));
+add_filter( 'the_title', array($this,"the_title_filter"));
 
 
 }
